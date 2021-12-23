@@ -1,10 +1,13 @@
 package com.bookstore.dao;
 
+import static com.bookstoredb.utils.Constants.COUNT_ALL_USERS;
+import static com.bookstoredb.utils.Constants.FIND_ALL_USERS;
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import com.bookstoredb.entity.Users;
+import com.bookstoredb.entity.Users;;
 
 public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 
@@ -22,27 +25,23 @@ public class UserDAO extends JpaDAO<Users> implements GenericDAO<Users> {
 	}
 
 	@Override
-	public Users get(Object id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Users get(Object userId) {
+		return super.find(Users.class, userId);
 	}
 
 	@Override
-	public void delete(Object id) {
-		// TODO Auto-generated method stub
-
+	public void delete(Object userId) {
+		super.delete(Users.class, userId);
 	}
 
 	@Override
 	public List<Users> listAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.findAllWithNamedQuery(FIND_ALL_USERS);
 	}
 
 	@Override
 	public Long count() {
-		// TODO Auto-generated method stub
-		return null;
+		return super.findCountWithNamedQuery(COUNT_ALL_USERS);
 	}
 
 }

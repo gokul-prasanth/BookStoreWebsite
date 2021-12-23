@@ -1,6 +1,9 @@
 package com.bookstore.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 public class JpaDAO<E> {
 
@@ -30,4 +33,32 @@ public class JpaDAO<E> {
 		return entity;
 	}
 
+	public E find(Class<E> type, Object id) {
+		E entity = entityManager.find(type, id);
+		if(entity != null) {
+			entityManager.refresh(entity);
+		}
+		return entity;
+	}
+
+	public void delete(Class<E> type, Object id) {
+		entityManager.getTransaction().begin();
+
+		Object reference = entityManager.getReference(type, id);
+		entityManager.remove(reference);
+
+		entityManager.getTransaction().commit();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<E> findAllWithNamedQuery(String queryName) {
+		Query query = entityManager.createNamedQuery(queryName);
+		return query.getResultList();
+	}
+	
+	public Long findCountWithNamedQuery(String queryName) {
+		Query query = entityManager.createNamedQuery(queryName);
+		return (Long) query.getSingleResult();
+	}
+	
 }
