@@ -19,6 +19,7 @@ public class HomeServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("HomeServlet");		
 		String homepage = "frontend/index.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(homepage);
 		requestDispatcher.forward(request, response);
