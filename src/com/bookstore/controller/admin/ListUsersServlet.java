@@ -24,7 +24,6 @@ public class ListUsersServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		System.out.println("ListUsersServlet");		
 		UserServices userService = new UserServices();
 		List<Users> listUsers = userService.listUsers();
 		request.setAttribute("listUsers", listUsers);

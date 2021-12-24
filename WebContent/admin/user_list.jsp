@@ -14,11 +14,11 @@
 
 	<div align="center">
 		<h2>User management</h2>
-		<a href="">Create new user</a>
+		<h3><a href="">Create new user</a></h3>
 	</div>
 
 	<div align="center">
-		<table border="1">
+		<table border="1" cellpadding="5">
 			<tr>
 				<th>Index</th>
 				<th>Id</th>
@@ -30,6 +30,10 @@
 				<tr>
 					<td>${status.index + 1}</td>
 					<td>${user.userId}</td>
+					<td>${user.email}</td>
+					<td>${user.fullName}</td>
+					<td><a href="edit_user">Edit</a> &nbsp; 
+					<a href="delete_user">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</table>
