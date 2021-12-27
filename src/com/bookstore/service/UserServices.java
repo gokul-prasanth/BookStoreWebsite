@@ -49,7 +49,7 @@ public class UserServices {
 	}
 	
 	public void deleteUser(Object userId) {
-		userDao.delete(userId);  
+		userDao.delete(userId);
 	}
 
 
